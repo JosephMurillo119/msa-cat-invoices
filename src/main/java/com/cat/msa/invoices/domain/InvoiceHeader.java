@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 public class InvoiceHeader {
-    private long id;
+    private Long id;
     private String Number;
     private String customerName;
     private Date date;
