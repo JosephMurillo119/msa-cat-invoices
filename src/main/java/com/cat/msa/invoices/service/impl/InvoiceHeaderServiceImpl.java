@@ -15,6 +15,7 @@ public class InvoiceHeaderServiceImpl implements InvoiceHeaderService {
 
     @Override
     public InvoiceHeader createInvoiceHeader(InvoiceHeader invoiceHeader) {
+        invoiceHeader.calculateInvoiceAmount();
         return invoiceHeaderRepository.save(invoiceHeader);
     }
 }
