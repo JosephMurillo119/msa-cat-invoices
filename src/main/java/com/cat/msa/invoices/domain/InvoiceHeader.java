@@ -33,11 +33,11 @@ public class InvoiceHeader {
     @OneToMany(mappedBy = "invoiceHeader", cascade = CascadeType.ALL)
     private List<InvoiceDetail> invoiceDetails;
 
-    public void calculateInvoiceAmounts(){
+    public void calculateInvoiceAmount(){
         calculateSubTotalAmount();
         calculateVatAmount();
         calculateTotalAmount();
-        addInvoiceDetail();
+        addInvoiceDetails();
     }
 
     public void calculateSubTotalAmount(){
@@ -48,14 +48,14 @@ public class InvoiceHeader {
         }
     }
     public void calculateVatAmount(){
-        subTotalAmount = subTotalAmount.multiply(Constant.VAT_RATE);
+        vatAmount = subTotalAmount.multiply(Constant.VAT_RATE);
     }
     public void calculateTotalAmount(){
         totalAmount = subTotalAmount.add(vatAmount);
     }
 
-    public void addInvoiceDetail(){
-        for (InvoiceDetail invoiceDetail: invoiceDetails){
+    public void addInvoiceDetails(){
+        for (InvoiceDetail invoiceDetail: invoiceDetails) {
             invoiceDetail.setInvoiceHeader(this);
         }
     }
