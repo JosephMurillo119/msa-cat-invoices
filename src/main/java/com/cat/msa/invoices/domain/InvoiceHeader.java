@@ -33,6 +33,13 @@ public class InvoiceHeader {
     @OneToMany(mappedBy = "invoiceHeader", cascade = CascadeType.ALL)
     private List<InvoiceDetail> invoiceDetails;
 
+    public void calculateInvoiceAmounts(){
+        calculateSubTotalAmount();
+        calculateVatAmount();
+        calculateTotalAmount();
+        addInvoiceDetail();
+    }
+
     public void calculateSubTotalAmount(){
         subTotalAmount = BigDecimal.ZERO;
         for (InvoiceDetail invoiceDetail: invoiceDetails){
@@ -45,5 +52,11 @@ public class InvoiceHeader {
     }
     public void calculateTotalAmount(){
         totalAmount = subTotalAmount.add(vatAmount);
+    }
+
+    public void addInvoiceDetail(){
+        for (InvoiceDetail invoiceDetail: invoiceDetails){
+            invoiceDetail.setInvoiceHeader(this);
+        }
     }
 }
