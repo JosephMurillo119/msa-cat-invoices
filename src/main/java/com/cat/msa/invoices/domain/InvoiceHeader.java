@@ -18,7 +18,7 @@ public class InvoiceHeader {
     @Column(name = "INH_ID", nullable = false)
     private Long id;
     @Column(name = "INH_NUMBER", nullable = false)
-    private String Number;
+    private String number;
     @Column(name = "INH_CUS_NAME", nullable = false)
     private String customerName;
     @Column(name = "INH_DATE", nullable = false)
@@ -33,6 +33,13 @@ public class InvoiceHeader {
     @OneToMany(mappedBy = "invoiceHeader", cascade = CascadeType.ALL)
     private List<InvoiceDetail> invoiceDetails;
 
+    public void calculateInvoiceAmount(){
+        calculateSubTotalAmount();
+        calculateVatAmount();
+        calculateTotalAmount();
+        addInvoiceDetails();
+    }
+
     public void calculateSubTotalAmount(){
         subTotalAmount = BigDecimal.ZERO;
         for (InvoiceDetail invoiceDetail: invoiceDetails){
@@ -41,9 +48,15 @@ public class InvoiceHeader {
         }
     }
     public void calculateVatAmount(){
-        subTotalAmount = subTotalAmount.multiply(Constant.VAT_RATE);
+        vatAmount = subTotalAmount.multiply(Constant.VAT_RATE);
     }
     public void calculateTotalAmount(){
         totalAmount = subTotalAmount.add(vatAmount);
+    }
+
+    public void addInvoiceDetails(){
+        for (InvoiceDetail invoiceDetail: invoiceDetails) {
+            invoiceDetail.setInvoiceHeader(this);
+        }
     }
 }
