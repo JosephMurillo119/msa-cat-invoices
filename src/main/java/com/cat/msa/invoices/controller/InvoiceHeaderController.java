@@ -33,5 +33,4 @@ public class InvoiceHeaderController implements InvoiceHeaderApi{
         InvoiceHeader invoiceHeader = invoiceHeaderService.findByNumber(number);
         return new ResponseEntity<>(invoiceHeader, HttpStatus.OK);
     }
-
 }

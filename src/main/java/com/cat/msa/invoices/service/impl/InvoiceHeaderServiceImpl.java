@@ -22,7 +22,11 @@ public class InvoiceHeaderServiceImpl implements InvoiceHeaderService {
 
     @Override
     public List<InvoiceHeader> getAll() {
-        return invoiceHeaderRepository.findAll();
+        List<InvoiceHeader> invoiceHeaders = invoiceHeaderRepository.findAll();
+        if (invoiceHeaders.isEmpty()) {
+            throw new RuntimeException("No invoices found");
+        }
+        return invoiceHeaders;
     }
 
     @Override
