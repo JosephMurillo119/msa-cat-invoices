@@ -12,5 +12,4 @@ public class ApiExceptionHandler {
     public ResponseEntity<String> runtimeExceptionHandler(RuntimeException ex){
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NO_CONTENT);
     }
-
 }
