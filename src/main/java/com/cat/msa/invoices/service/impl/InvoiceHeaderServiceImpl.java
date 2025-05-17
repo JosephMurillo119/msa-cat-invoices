@@ -24,4 +24,10 @@ public class InvoiceHeaderServiceImpl implements InvoiceHeaderService {
     public List<InvoiceHeader> getAll() {
         return invoiceHeaderRepository.findAll();
     }
+
+    @Override
+    public InvoiceHeader findByNumber(String number) {
+        return invoiceHeaderRepository.findByNumber(number)
+                .orElseThrow(() -> new RuntimeException("Invoice not found with number"));
+    }
 }

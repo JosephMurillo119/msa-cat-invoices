@@ -28,4 +28,10 @@ public class InvoiceHeaderController implements InvoiceHeaderApi{
         return new ResponseEntity<>(invoiceHeaders, HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<InvoiceHeader> findByNumber(String number) {
+        InvoiceHeader invoiceHeader = invoiceHeaderService.findByNumber(number);
+        return new ResponseEntity<>(invoiceHeader, HttpStatus.OK);
+    }
+
 }
