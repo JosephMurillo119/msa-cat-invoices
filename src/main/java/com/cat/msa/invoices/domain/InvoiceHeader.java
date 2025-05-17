@@ -18,7 +18,7 @@ public class InvoiceHeader {
     @Column(name = "INH_ID", nullable = false)
     private Long id;
     @Column(name = "INH_NUMBER", nullable = false)
-    private String Number;
+    private String number;
     @Column(name = "INH_CUS_NAME", nullable = false)
     private String customerName;
     @Column(name = "INH_DATE", nullable = false)
