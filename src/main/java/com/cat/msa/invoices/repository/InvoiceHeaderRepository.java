@@ -7,4 +7,6 @@ import java.util.Optional;
 public interface InvoiceHeaderRepository extends JpaRepository<InvoiceHeader, Long> {
   
     Optional<InvoiceHeader> findByNumber(String number);
+    void deleteByNumber(String number); // <- Nuevo método añadido
+
 }

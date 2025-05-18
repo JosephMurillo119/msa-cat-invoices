@@ -10,4 +10,6 @@ public interface InvoiceHeaderService {
     List<InvoiceHeader> getAll();
 
     InvoiceHeader findByNumber(String number);
+
+    void deleteByNumber(String number); // Nuevo método
 }
