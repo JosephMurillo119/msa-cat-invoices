@@ -33,4 +33,9 @@ public class InvoiceHeaderController implements InvoiceHeaderApi{
         InvoiceHeader invoiceHeader = invoiceHeaderService.findByNumber(number);
         return new ResponseEntity<>(invoiceHeader, HttpStatus.OK);
     }
+    @Override
+    public ResponseEntity<Void> deleteByNumber(String number) {
+        invoiceHeaderService.deleteByNumber(number);
+        return ResponseEntity.noContent().build(); // HTTP 204
+    }
 }
