@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: invoices
       POSTGRES_PASSWORD: invoices
-      POSTGRES_DB: invoices_db
+      POSTGRES_DB: invoices
     volumes:
       - db_data:/var/lib/postgresql/data
 
