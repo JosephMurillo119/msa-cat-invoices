@@ -11,5 +11,5 @@ public interface InvoiceHeaderService {
 
     InvoiceHeader findByNumber(String number);
 
-    void deleteByNumber(String number); // Nuevo método
+    void deleteByNumber(String number); // Nuevo metodo
 }
