@@ -19,5 +19,4 @@ public interface InvoiceHeaderApi {
 
     @DeleteMapping("/{number}")
     ResponseEntity<Void> deleteByNumber(@PathVariable String number);
-
 }
